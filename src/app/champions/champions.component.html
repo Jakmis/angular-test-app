@@ -1,16 +1,24 @@
-<h2>{{champion.name}} Details</h2>
+<!--<h2>{{champion.name}} Details</h2>
 <div><span>id: </span>{{champion.id}}</div>
 <div><span>name: </span>{{champion.name}}</div>
 <div>
-    <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="champion.name" placeholder="name">
-</div>
+    <label for="name">Champion name: </label>
+    <input id="name" [(ngModel)]="champions.name" placeholder="name">
+</div>-->
 <h2>My Heroes</h2>
 <ul class="heroes">
     <li *ngFor="let champion of champions">
-        <button type="button">
+        <button [class.selected]="champion === selectedChampion" type="button" (onclick)="onSelect(champion)">
             <span class="badge">{{champion.id}}</span>
             <span class="name">{{champion.name}}</span>
         </button>
     </li>
 </ul>
+<div *ngIf="selectedChampion">
+    <h2>{{selectedChampion.name | uppercase}} Details</h2>
+    <div>id: {{selectedChampion.id}}</div>
+    <div>
+      <label for="hero-name">Champion name: </label>
+      <input id="hero-name" [(ngModel)]="selectedChampion.name" placeholder="name">
+    </div>
+  </div>

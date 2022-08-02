@@ -9,16 +9,16 @@ import { CHAMPIONS } from '../mock-champions';
 })
 export class ChampionsComponent implements OnInit {
    
-  champion: Champion = {
-    id: 1,
-    name: 'Aatrox'
-  }
-
   champions = CHAMPIONS;
-
+  selectedChampion?: Champion;
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+  onSelect(champion: Champion): void {
+    this.selectedChampion = champion;
+    }
   
 }
