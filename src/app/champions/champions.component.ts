@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Champion } from '../champion';
 import { ChampionService } from '../champion.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-champions',
@@ -11,14 +12,9 @@ export class ChampionsComponent implements OnInit {
 
   champions: Champion[] = [];
   selectedChampion!: Champion;
-  
-  
-  constructor(private championService: ChampionService) { }
 
-  getChampions(): void {
-    this.championService.getChampions()
-    .subscribe(champions => this.champions = champions);
-  }
+
+  constructor(private championService: ChampionService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getChampions();
@@ -26,5 +22,8 @@ export class ChampionsComponent implements OnInit {
   onSelect(champion: Champion): void {
     this.selectedChampion = champion;
   }
-  
+  getChampions(): void {
+    this.championService.getChampions()
+      .subscribe(champions => this.champions = champions);
+  }
 }
