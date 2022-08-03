@@ -11,16 +11,11 @@ import { MessageService } from '../message.service';
 export class ChampionsComponent implements OnInit {
 
   champions: Champion[] = [];
-  selectedChampion!: Champion;
-
 
   constructor(private championService: ChampionService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getChampions();
-  }
-  onSelect(champion: Champion): void {
-    this.selectedChampion = champion;
   }
   getChampions(): void {
     this.championService.getChampions()

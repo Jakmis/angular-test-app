@@ -5,13 +5,12 @@
     <label for="name">Champion name: </label>
     <input id="name" [(ngModel)]="champions.name" placeholder="name">
 </div>-->
-<h2>My Heroes</h2>
+<h2>My Champions</h2>
 <ul class="heroes">
     <li *ngFor="let champion of champions">
-        <button [class.selected]="champion === selectedChampion" type="button" (click)="onSelect(champion)">
-            <span class="badge">{{champion.id}}</span>
-            <span class="name">{{champion.name}}</span>
-        </button>
+        <a routerLink="/detail/{{champion.id}}">
+            <span class="badge">{{champion.id}}</span> {{champion.name}}
+        </a>
     </li>
 </ul>
 <!--<div *ngIf="selectedChampion">
@@ -21,6 +20,6 @@
         <label for="hero-name">Champion name: </label>
         <input id="hero-name" [(ngModel)]="selectedChampion.name" placeholder="name">
     </div>
-</div>-->
+</div>
 
-<app-champion-detail [champion]="selectedChampion"></app-champion-detail>
+<app-champion-detail [champion]="selectedChampion"></app-champion-detail>-->

@@ -1,0 +1,6 @@
+<h2>Top Heroes</h2>
+<div class="heroes-menu">
+    <a *ngFor="let champion of champions" routerLink="/detail/{{champion.id}}">
+        {{champion.name}}
+    </a>
+</div>
