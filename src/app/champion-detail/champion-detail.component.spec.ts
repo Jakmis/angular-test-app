@@ -6,10 +6,10 @@ import { Champion } from '../champion';
 
 import { ChampionDetailComponent } from './champion-detail.component';
 
-fdescribe('ChampionDetailComponent', () => {
+describe('ChampionDetailComponent', () => {
   let component: ChampionDetailComponent;
   let fixture: ComponentFixture<ChampionDetailComponent>;
-  let id = 1111;
+  let id = 111;
   const activatedRouteStub = {snapshot: {paramMap: {get: ()=>{return id;}}}};
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,7 +31,7 @@ fdescribe('ChampionDetailComponent', () => {
   describe('When component is initialized', () => {
     it('should load champion data', ()=>{
       //component.getChampion()
-      expect(component.champion).toEqual({} as Champion)
+      expect(component.getChampion()).toBeTruthy();
     })
   })
 });

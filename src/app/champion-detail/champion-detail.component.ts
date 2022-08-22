@@ -27,10 +27,16 @@ export class ChampionDetailComponent implements OnInit {
 
   getChampion(): Observable<Champion> {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(id);
     return this.championService.getChampion(id)
-      
   }
+
+  save(): void {
+    if (this.champion){
+      this.championService.updateChampion(this.champion).subscribe(()=> this.goBack)
+      console.log(`Champion ${this.champion.name} with id ${this.champion.id} have been saved!`);
+    }
+  }
+
   goBack(): void {
     this.location.back();
   }

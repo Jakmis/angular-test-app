@@ -1,25 +1,18 @@
-<!--<h2>{{champion.name}} Details</h2>
-<div><span>id: </span>{{champion.id}}</div>
-<div><span>name: </span>{{champion.name}}</div>
-<div>
-    <label for="name">Champion name: </label>
-    <input id="name" [(ngModel)]="champions.name" placeholder="name">
-</div>-->
 <h2>My Champions</h2>
 <ul class="heroes">
     <li *ngFor="let champion of champions">
         <a routerLink="/detail/{{champion.id}}">
             <span class="badge">{{champion.id}}</span> {{champion.name}}
         </a>
+        <button type="button" class="delete" title="delete champion" (click)="delete(champion)">x</button>
     </li>
 </ul>
-<!--<div *ngIf="selectedChampion">
-    <h2>{{selectedChampion.name | uppercase}} Details</h2>
-    <div>id: {{selectedChampion.id}}</div>
-    <div>
-        <label for="hero-name">Champion name: </label>
-        <input id="hero-name" [(ngModel)]="selectedChampion.name" placeholder="name">
-    </div>
-</div>
+<div>
+    <label for="new-hero">Champion name: </label>
+    <input id="new-hero" #championName />
 
-<app-champion-detail [champion]="selectedChampion"></app-champion-detail>-->
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="button" class="add-button" (click)="add(championName.value); championName.value=''">
+        Add champion
+    </button>
+</div>
